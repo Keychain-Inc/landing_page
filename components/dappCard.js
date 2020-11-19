@@ -3,7 +3,8 @@ const DappCard = ({
                       dappIconPath,
                       descriptionTop,
                       dappAddress,
-                      dappContract
+                      dappContract,
+                      dapp
                     }) => {
 
 
@@ -30,6 +31,7 @@ const DappCard = ({
                         </button>
                         </a>
                     </div>
+                    {(dapp) ? (
                     <div className="absolute harvest-button2">
                         <a href={dappContract} target="_blank">
                             <button className="btn" style={{background: "#acffff", text: "#202225"}}>
@@ -37,6 +39,10 @@ const DappCard = ({
                             </button>
                         </a>
                     </div>
+                    ) :
+                    (
+                    <div></div>
+                    ) }
                 </div>
             </section>
 
