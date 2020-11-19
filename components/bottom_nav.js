@@ -17,6 +17,11 @@ const BottomNav = () => {
                                 Twitter
                             </a>
                         </Link>
+                        <Link href="https://discord.gg/v3m7g5kCxS">
+                            <a className="text-xs md:text-lg text-white p-2 md:p-6 hover:text-green cursor-pointer" target="_blank">
+                                Discord
+                            </a>
+                        </Link>
                     </div>
                 </footer>
 
