@@ -15,7 +15,13 @@ const Nav = () => {
                 </div>
               </a>
             </Link>
-
+            <div className="flex flex-row items-center">
+              <Link href="/dapps">
+                <a className="text-xs md:text-lg text-white p-2 md:p-6 hover:text-green cursor-pointer">
+                  Dapps
+                </a>
+              </Link>
+            </div>
           </nav>
         </header>
 

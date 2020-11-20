@@ -13,17 +13,20 @@ const DappCard = ({
             <section className="mb-3">
                 <div className="outer py-12 flex flex-col items-center">
 
-
-
                     <header>
-                        <div className="flex flex-col items-center">
+                        <div className="flex flex-col items-center pb-4">
                             <h2 className="mt-2 mb-4 text-lg text-white font-bold crop">
                                 {dappName}
                             </h2>
-                            <p className="text-md text-white">{descriptionTop}</p>
+                            <p className="text-md text-white text-center">{descriptionTop}</p>
 
                         </div>
                     </header>
+                    <img
+                        className="my-2"
+                        src={`/${dappIconPath}`}
+                        alt={`${dappName} image`}
+                    />
                     <div className="absolute harvest-button">
                         <a href={dappAddress} target="_blank">
                         <button className="btn" style={{background: "#acffff", text: "#202225"}}>
@@ -69,8 +72,8 @@ const DappCard = ({
           width: 25px;
         }
         div > img {
-          height: 65px;
-          width: 65px;
+          height: 170px;
+         
         }
       `}</style>
 
