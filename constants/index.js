@@ -33,7 +33,7 @@ export const DAPP_OPTIONS = [
     },
     {
         dappName: "NFT DAO",
-        dappIconPath: "handles_logo.svg",
+        dappIconPath: "logo.png",
         descriptionTop: "Create a DAO for any of your NFTs",
         dappAddress: "https://nftdao.keychain.me/",
         dappContract: "https://ropsten.etherscan.io/address/0x6B13053bb82f83a87c6cc139841254170271cb4C#code",
