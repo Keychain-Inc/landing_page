@@ -24,7 +24,7 @@ function Listings() {
                 <div className="py-4 w-full flex justify-center">
                     <div className="py-4 content-box w-full">
                         <p className="text-center text-md  md:text-lg font-bold text-white px-2">
-                            We are builders that make services and tools that we use. We are building the tools to bring the future for financial applications to users in a simple and clean experience. We are trying to make the cryptocurrency space better.
+                            We are builders that are here to create services and tools to further the Crypto space. We are building the tools to bring the future for financial applications to users in a simple and clean experience. We believe that everyone, everywhere should have access to the tools and skills needed to be able to manage their own money and experiment with what money can be.
                         </p>
                     </div>
                 </div>
@@ -33,6 +33,19 @@ function Listings() {
                 <div className="py-2 min-w-full md:flex flex-col justify-start items-center">
                     <div className="py-4 w-full flex justify-center text-center">
                         <div className="py-4 w-full">
+
+                            <Link href="/crypto101">
+                                <button style={{background: "#acffff", text: "#202225"}}
+                                        className="btn w-6/12 md:w-4/12"
+                                        type="button">
+                                    <p className="capitalize hover:text-white">Read out Crypto 101</p>
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="py-4 w-full flex justify-center text-center">
+                        <div className="py-4 w-full">
+
                             <Link href="/dapps">
                                 <button style={{background: "#acffff", text: "#202225"}}
                                         className="btn w-6/12 md:w-4/12"
@@ -42,7 +55,6 @@ function Listings() {
                             </Link>
                         </div>
                     </div>
-
                 </div>
 
             </div>

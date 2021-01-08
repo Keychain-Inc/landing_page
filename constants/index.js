@@ -32,11 +32,11 @@ export const DAPP_OPTIONS = [
         dapp : true
     },
     {
-        dappName: "NFT DAO",
+        dappName: "Alchemy",
         dappIconPath: "logo.png",
         descriptionTop: "Create a DAO for any of your NFTs",
-        dappAddress: "https://nftdao.keychain.me/",
-        dappContract: "https://ropsten.etherscan.io/address/0x6B13053bb82f83a87c6cc139841254170271cb4C#code",
+        dappAddress: "https://alchemy.keychain.me/",
+        dappContract: "https://etherscan.io/address/0x5ef046f040944581cb4dd4652bbb3fa9ba120f09#code",
         dapp : true
     },
 ];
