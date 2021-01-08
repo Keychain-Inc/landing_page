@@ -38,7 +38,7 @@ function Listings() {
                                 <button style={{background: "#acffff", text: "#202225"}}
                                         className="btn w-6/12 md:w-4/12"
                                         type="button">
-                                    <p className="capitalize hover:text-white">Read out Crypto 101</p>
+                                    <p className="capitalize hover:text-white">Crypto 101</p>
                                 </button>
                             </Link>
                         </div>
