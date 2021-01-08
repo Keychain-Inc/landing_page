@@ -575,6 +575,189 @@ function Crypto101() {
                     </div>
                 </div>
 
+                <div className="py-2 w-full flex justify-center">
+                    <div className="py-2 w-full">
+                        <p className="text-justify text-md  md:text-lg text-white px-2">
+                            Alright now that you know roughly what's what let's go through how Cryptos generally operate at a high level and walk you through your first transaction.
+                            <br/>
+                            <br/>
+                            To get started you'll need to sign up to an exchange such as coinbase.com or binance.com and purchase some cryptocurrency or find someone to send you some. Once you have some ready to be sent to your own wallet we can move to the first step.
+                            <br/>
+                            <br/>
+                            <b>1. Download and setup your wallet</b>
+                            <br/>
+                            We recommend that the wallet you use be a reputable one as any wallet that controls your keys controls your funds. Once you download a wallet you'll see that it asks you to save your private key or seed. Make sure to keep this somewhere safe and preferably stored not anywhere that has an internet connection. If this gets lost or stolen there’s no way to recover your funds.
+                            <br/>
+                            <br/>
+                            <b>2. Receiving crypto</b>
+                            <br/>
+                            Now that your wallet is ready to go you should see a button to receive. Press this and you'll be shown your unique address belonging to your private key. Use this as the recipient for your cryptocurrency, make sure to use the correct address for the correct cryptocurrency as each crypto has its own address for your key.
+                            <br/>
+                            <br/>
+                            <b>3. Sending crypto</b>
+                            <br/>
+                            Now that you have some find someone to send some crypto to. Walk them through if needed and then get your wallet out.
+                            <br/>
+                            <br/>
+                            Go to the send option and put in their address and the amount you want to send. You'll then see a suggested fee for the transaction. This fee will be used by miners or stakers to decide which transactions get in first. The higher the fee the faster it'll be included in a block. The suggested fee should be fine.
+                            <br/>
+                            <br/>
+                            Confirm the transaction and wait for your transaction to be confirmed. And you're done.
+                            <br/>
+                            <br/>
+                            Congrats you just sent someone money with no intermediary, anywhere in the world and in 10m or less.
+
+                        </p>
+                    </div>
+                </div>
+
+                <div className="py-4 w-full flex justify-center">
+                    <div className="py-4 content-box w-full">
+                        <h3 className="text-center text-xl  md:text-2xl font-bold text-white px-2">
+                            Using DAPPS
+                        </h3>
+                    </div>
+                </div>
+
+                <div className="py-2 w-full flex justify-center">
+                    <div className="py-2 w-full">
+                        <p className="text-justify text-md  md:text-lg text-white px-2">
+                            Now that you have the basics covered lets buy some crypto using a decentralized exchange. For this you will need metamask (metamask.io) and some Ether (the currency for the Ethereum network).
+                            <br/>
+                            <br/>
+                            1. Go to app.uniswap.com and authorize the site to connect to metamask
+                            <br/>
+                            2. On the bottom box select a token. You can also put a smart contract address for a non listed token to be able to trade it (try 0xfa6de2697D59E88Ed7Fc4dFE5A33daC43565ea41 for a token that acts as an index for DEFI)
+                            <br/>
+                            3. Choose how much you want to spend or receive
+                            <br/>
+                            4. Choose your gas fee (note the difference between gas price being how much you pay per 1 gas and gas limit being the max gas you're willing to pay for)
+                            <br/>
+                            5. Confirm the transaction
+                            <br/>
+                            6. You're done. You just traded on a completely autonomous exchange thats controlled by no humans and is just code
+                        </p>
+                    </div>
+                </div>
+
+                <div className="py-2 w-full flex justify-center">
+                    <div className="py-2 w-full">
+                        <p className="text-center md:text-justify text-md  md:text-lg font-bold text-white px-2">
+                            Why Crypto?
+                        </p>
+                        <p className="text-justify text-md  md:text-lg text-white px-2">
+                            CryptoCurrency allows you to, for the first time, be in complete control for your money online. No one has access to your money, no one can freeze your accounts, take fees, lose your money, you and only you are responsible. Crypto allows you full control and makes cross border or even national payments easy and faster than traditional rails. You can send money from the US, to South Africa to China, back to the US in under 60s and pay fees usually under 1 USD for any amount.
+                            <br/>
+                            <br/>
+                            Crypto can also act as a hedge against inflation and monetary policy where banks simply print more money, making the value for your savings go down slowly without you knowing. Assets such as Bitcoin and Ethereum are deflationary, holding value against inflationary currencies.
+                            <br/>
+                            <br/>
+                            Crypto allows you to own your money and control how you spend it.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div className="py-4 w-full flex justify-center">
+                    <div className="py-4 content-box w-full">
+                        <h3 className="text-center text-xl  md:text-2xl font-bold text-white px-2">
+                            Resources
+                        </h3>
+                    </div>
+                </div>
+
+                <div className="py-2 w-full flex justify-center">
+                    <div className="py-2 w-full">
+                        <p className="text-center md:text-justify text-md  md:text-lg font-bold text-white px-2">
+                            Basics
+                        </p>
+                        <p className="text-justify text-md  md:text-lg text-white px-2">
+                            Good intro for some background and philosophy of crypto (generally Andreas Antonopolous has really good videos for the space and getting a basic understanding of cryptology)
+                            <br/>
+                            <a href="https://youtu.be/qkxdys-Ek9U" target="_blank">https://youtu.be/qkxdys-Ek9U</a>
+                            <br/>
+                            <br/>
+                            The original paper for BTC which started the basis for all cryptology
+                            <br/>
+                            <a href="https://bitcoin.org/bitcoin.pdf" target="_blank">https://bitcoin.org/bitcoin.pdf</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div className="py-2 w-full flex justify-center">
+                    <div className="py-2 w-full">
+                        <p className="text-center md:text-justify text-md  md:text-lg font-bold text-white px-2">
+                            Technical
+                        </p>
+                        <p className="text-justify text-md  md:text-lg text-white px-2">
+                            Mastering Bitcoin (please purchase or support Andreas for making these open source)
+                            <br/>
+                            <a href="https://gateway.pinata.cloud/ipfs/Qmb4zxhSVqraAXEyUqU5om4Dsv676vgwMcUnHUJPfH8LsF" target="_blank">https://gateway.pinata.cloud/ipfs/Qmb4zxhSVqraAXEyUqU5om4Dsv676vgwMcUnHUJPfH8LsF</a>
+                            <br/>
+                            <br/>
+                            Mastering Ethereum
+                            <br/>
+                            <a href="https://gateway.pinata.cloud/ipfs/QmSLS1gkC1u9BGsShbxPph6WJ3t5zAz4uoEjRBoyWwz8rr" target="_blank">https://gateway.pinata.cloud/ipfs/QmSLS1gkC1u9BGsShbxPph6WJ3t5zAz4uoEjRBoyWwz8rr</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div className="py-2 w-full flex justify-center">
+                    <div className="py-2 w-full">
+                        <p className="text-center md:text-justify text-md  md:text-lg font-bold text-white px-2">
+                            Exchanges
+                        </p>
+                        <p className="text-justify text-md  md:text-lg text-white px-2">
+                            Coinbase.com
+                            <br/>
+                            Kraken.com
+                            <br/>
+                            App.Uniswap.org
+                            <br/>
+                            Binance.com
+                        </p>
+                    </div>
+                </div>
+
+                <div className="py-2 w-full flex justify-center">
+                    <div className="py-2 w-full">
+                        <p className="text-center md:text-justify text-md  md:text-lg font-bold text-white px-2">
+                            Decentralized Finance
+                        </p>
+                        <p className="text-justify text-md  md:text-lg text-white px-2">
+                            Indexed.Finance (decentralized tokenized indexs, good for beginners to be exposed to the whole space)
+                            <br/>
+                            App.uniswap.org (decentralized exchange)
+                        </p>
+                    </div>
+                </div>
+
+                <div className="py-2 w-full flex justify-center">
+                    <div className="py-2 w-full">
+                        <p className="text-center md:text-justify text-md  md:text-lg font-bold text-white px-2">
+                            Tools
+                        </p>
+                        <p className="text-justify text-md  md:text-lg text-white px-2">
+                            etherscan.io (for ethereum transactions, blocks, network info, contract verification)
+                            <br/>
+                            Zapper.Fi (useful dashboard for many defi projects)
+                            <br/>
+                            Handles.me (links that replace addresses with usernames)
+                        </p>
+                    </div>
+                </div>
+
+                <div className="py-2 w-full flex justify-center">
+                    <div className="py-2 w-full">
+                        <p className="text-center md:text-justify text-md  md:text-lg font-bold text-white px-2">
+                            Disclaimer
+                        </p>
+                        <p className="text-justify text-md  md:text-lg text-white px-2">
+                            Many “Dapps” aren’t actually decentralized as they can potentially be manipulated by the contract owner or have other things that could be exploited built in as well as many other aspects that aren’t really decentralized such as prices, ability to change the contract and balances. Always do thorough research on any crypto you wish to interact with.
+                        </p>
+                    </div>
+                </div>
+
 
             </div>
 
