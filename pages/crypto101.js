@@ -621,7 +621,7 @@ function Crypto101() {
 
                 <div className="py-2 w-full flex justify-center">
                     <div className="py-2 w-full">
-                        <p className="text-justify text-md  md:text-lg text-white px-2">
+                        <p className="text-justify text-md  md:text-lg text-white px-2 break-words">
                             Now that you have the basics covered lets buy some crypto using a decentralized exchange. For this you will need metamask (metamask.io) and some Ether (the currency for the Ethereum network).
                             <br/>
                             <br/>
@@ -689,7 +689,7 @@ function Crypto101() {
                         <p className="text-center md:text-justify text-md  md:text-lg font-bold text-white px-2">
                             Technical
                         </p>
-                        <p className="text-justify text-md  md:text-lg text-white px-2">
+                        <p className="text-justify text-md  md:text-lg text-white px-2 break-words">
                             Mastering Bitcoin (please purchase or support Andreas for making these open source)
                             <br/>
                             <a href="https://gateway.pinata.cloud/ipfs/Qmb4zxhSVqraAXEyUqU5om4Dsv676vgwMcUnHUJPfH8LsF" target="_blank">https://gateway.pinata.cloud/ipfs/Qmb4zxhSVqraAXEyUqU5om4Dsv676vgwMcUnHUJPfH8LsF</a>
