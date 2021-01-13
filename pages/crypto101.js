@@ -1,11 +1,83 @@
 import React from "react";
 import Link from "next/link";
+import {
+    EmailIcon,
+    FacebookIcon,
+    LinkedinIcon,
+    RedditIcon,
+    TelegramIcon,
+    TwitterIcon,
+    WhatsappIcon,
+    LinkedinShareButton,
+    TwitterShareButton,
+    TelegramShareButton,
+    WhatsappShareButton,
+    RedditShareButton,
+    EmailShareButton,
+    FacebookShareButton
+} from "react-share";
 
 function Crypto101() {
+
+    const shareUrl = "https://keychain.me/Crypto101";
+    const title = "Share on Social Media"
     return (
 
         <div className="container bg-white">
             <div className="py-16 min-w-full flex flex-col justify-start items-center">
+                <div className="py-1 w-full flex justify-center items-center">
+                    <div className="py-1 w-full justify-center text-center items-center">
+                        <FacebookShareButton
+                            url={shareUrl}
+                            quote={title}
+                        >
+                            <FacebookIcon size={32} round />
+                        </FacebookShareButton>
+
+                        <TwitterShareButton
+                            url={shareUrl}
+                            title={title}
+                        >
+                            <TwitterIcon size={32} round />
+                        </TwitterShareButton>
+
+                        <TelegramShareButton
+                            url={shareUrl}
+                            title={title}
+                        >
+                            <TelegramIcon size={32} round />
+                        </TelegramShareButton>
+
+                        <WhatsappShareButton
+                            url={shareUrl}
+                            title={title}
+                            separator=":: "
+                        >
+                            <WhatsappIcon size={32} round />
+                        </WhatsappShareButton>
+
+                        <LinkedinShareButton url={shareUrl} >
+                            <LinkedinIcon size={32} round />
+                        </LinkedinShareButton>
+
+                        <RedditShareButton
+                            url={shareUrl}
+                            title={title}
+                            windowWidth={660}
+                            windowHeight={460}
+                        >
+                            <RedditIcon size={32} round />
+                        </RedditShareButton>
+
+                        <EmailShareButton
+                            url={shareUrl}
+                            subject={title}
+                            body="body"
+                        >
+                            <EmailIcon size={32} round />
+                        </EmailShareButton>
+                    </div>
+                </div>
 
 
 
@@ -755,6 +827,60 @@ function Crypto101() {
                         <p className="text-justify text-md  md:text-lg text-black px-2">
                             Many “Dapps” aren’t actually decentralized as they can potentially be manipulated by the contract owner or have other things that could be exploited built in as well as many other aspects that aren’t really decentralized such as prices, ability to change the contract and balances. Always do thorough research on any crypto you wish to interact with.
                         </p>
+                    </div>
+                </div>
+
+                <div className="py-1 w-full flex justify-center items-center">
+                    <div className="py-1 w-full justify-center text-center items-center">
+                        <FacebookShareButton
+                            url={shareUrl}
+                            quote={title}
+                        >
+                            <FacebookIcon size={32} round />
+                        </FacebookShareButton>
+
+                        <TwitterShareButton
+                            url={shareUrl}
+                            title={title}
+                        >
+                            <TwitterIcon size={32} round />
+                        </TwitterShareButton>
+
+                        <TelegramShareButton
+                            url={shareUrl}
+                            title={title}
+                        >
+                            <TelegramIcon size={32} round />
+                        </TelegramShareButton>
+
+                        <WhatsappShareButton
+                            url={shareUrl}
+                            title={title}
+                            separator=":: "
+                        >
+                            <WhatsappIcon size={32} round />
+                        </WhatsappShareButton>
+
+                        <LinkedinShareButton url={shareUrl} >
+                            <LinkedinIcon size={32} round />
+                        </LinkedinShareButton>
+
+                        <RedditShareButton
+                            url={shareUrl}
+                            title={title}
+                            windowWidth={660}
+                            windowHeight={460}
+                        >
+                            <RedditIcon size={32} round />
+                        </RedditShareButton>
+
+                        <EmailShareButton
+                            url={shareUrl}
+                            subject={title}
+                            body="body"
+                        >
+                            <EmailIcon size={32} round />
+                        </EmailShareButton>
                     </div>
                 </div>
 
