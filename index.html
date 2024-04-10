@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="s1.png">
+
+    <title>Made by PR0</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1ffff;
+        }
+
+        header {
+            background-color: #ff4081;
+            color: white;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            padding: 40px;
+            width: 800px;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 0px;
+
+
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 36px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 30px;
+        }
+
+        a {
+            display: inline-block;
+            color: #00afff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            background-color: white;
+        }
+        .dapp-card {
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dapp-card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: skew(-45deg) translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 1;
+        }
+
+        .dapp-card:hover:before {
+            transform: skew(-45deg) translateX(100%);
+        }
+
+        .dapp-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .dapp-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .dapp-card h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .dapp-card p {
+            margin: 10px 0;
+            color: #fff;
+
+        }
+
+
+        .dapp-card:nth-child(4n+1) {
+            background-color: #ff4081;
+        }
+
+        .dapp-card:nth-child(4n+2) {
+            background-color: #4caf9c;
+        }
+
+        .dapp-card:nth-child(4n+3) {
+            background-color: #2196f3;
+        }
+
+        .dapp-card:nth-child(4n+4) {
+            background-color: #a83bff;
+        }
+
+        .dapp-card:nth-child(4n+1) h2,
+        .dapp-card:nth-child(4n+2) h2,
+        .dapp-card:nth-child(4n+3) h2,
+        .dapp-card:nth-child(4n+4) h2 {
+            color: white;
+        }
+
+        .dapp-card:nth-child(4n+1) a,
+        .dapp-card:nth-child(4n+2) a,
+        .dapp-card:nth-child(4n+3) a,
+        .dapp-card:nth-child(4n+4) a {
+            background-color: white;
+        }
+
+        .dapp-card:nth-child(4n+1) a:hover,
+        .dapp-card:nth-child(4n+2) a:hover,
+        .dapp-card:nth-child(4n+3) a:hover,
+        .dapp-card:nth-child(4n+4) a:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Made by me :)</h1>
+        <a style="margin-top: 10px" href="./crypto101.html" target="_blank">Crypto 101</a>
+        <a style="margin-left: 6px" href="https://twitter.com/not_pr0/" target="_blank">Twitter</a>
+    </div>
+    </header>
+    <main>
+        <div class="dapp-card"> <img
+                src="https://cdn.discordapp.com/attachments/810019961165578294/1227557024242466887/GBvaK5XWIAE12Ay.png?ex=6628d691&is=66166191&hm=32b8f187c4fcd1f9cec393fb49857fcf078ea671285129e3074e745c32110bf4&"
+                alt="Scry">
+            <h2>Scry</h2>
+            <p>Scry is an open-source, permissionless, and flexible framework for independent Oracle deployment. It
+                offers high-scale batching, revenue earning, cross-chain data, and instant deployment. With Scry, anyone
+                can run their own fully independent, autonomous oracle without coding, deployable in less than 5
+                minutes.</p> <a href="https://scry.finance/" target="_blank">Discover Scry</a>
+        </div>
+        <div class="dapp-card"> <img
+                src="https://cdn.discordapp.com/attachments/810019961165578294/1227557024003260497/F3ExJfgWgAAC00-.png?ex=6628d691&is=66166191&hm=9d44a02417a1c0e641eee151fbb6aa0ba6890eb84858fe6fb473beec9a154e72&"
+                alt="addrs">
+            <h2>addrs</h2>
+            <p>addrs simplifies cryptocurrency transactions by allowing users to create payment profiles containing all
+                their addresses in one place. Compatible with various wallets and protocols, addrs is a non-custodial
+                platform that gives users full control over their assets. It also enables receiving crypto using Visa,
+                Mastercard, or bank accounts without the need for a custodial account.</p> <a href="https://addrs.to/"
+                target="_blank">Simplify with addrs</a>
+        </div>
+        <div class="dapp-card"> <img
+                src="https://cdn.discordapp.com/attachments/810019961165578294/1227557024905166919/GIZ_cHAXcAAIzka.png?ex=6628d691&is=66166191&hm=22d98e0462a31bd18c54b8858b320c14ff6d0844a156ced6e311977078f77e57&"
+                alt="Vain">
+            <h2>Vain</h2>
+            <p>Vain is an open marketplace for securely mining vanity ETH addresses using ECC offsets of public keys. It
+                provides a unique and personalized way to obtain custom Ethereum addresses that stand out from the
+                crowd.</p> <a href="https://vain.scry.finance/" target="_blank">Mine Your Vanity Address</a>
+        </div>
+        <div class="dapp-card"> <img
+                src="https://cdn.discordapp.com/attachments/810019961165578294/1227557025244774400/GKk4hk7WQAAD81M.png?ex=6628d691&is=66166191&hm=de9b7dc35685f3950f0433086bb3d8d5cf3810baf6e38df57d4c2679cccdaa58&"
+                alt="Kaku">
+            <h2>Kaku</h2>
+            <p>Kaku is a decentralized platform for commissioning art. Artists can showcase their work, and users can
+                request commissions with attached bounties. The commissioned art is minted as an NFT, ensuring
+                provenance and allowing the owner to show it off. Kaku provides a seamless and transparent way to
+                support artists and acquire unique digital art pieces.</p> <a href="https://kaku.art/"
+                target="_blank">Commission Art on Kaku</a>
+        </div>
+        <div class="dapp-card"> <img
+                src="https://cdn.discordapp.com/attachments/810019961165578294/1227557025530118154/F6i4hIpWEAEZTmD.png?ex=6628d691&is=66166191&hm=e9bcd9b035d28335e88923a445705254e94ba31b6e03a4612f0230da1085fea0&"
+                alt="Signet">
+            <h2>Signet</h2>
+            <p>Signet is a platform that allows creators to sign NFTs for their fans and collectors to gather signatures
+                from their favorite creators. It provides a unique way to showcase and authenticate digital autographs
+                on the blockchain. Users can display their signed NFTs, known as Signets, and engage with their favorite
+                creators in a new and exciting way.</p> <a href="https://signet.art/" target="_blank">Get Your
+                Signet</a>
+        </div>
+        <div class="dapp-card"> <img
+                src="https://cdn.discordapp.com/attachments/810019961165578294/1227557025798688849/E3yQGZSWYAI352h.png?ex=6628d691&is=66166191&hm=29ba7672ce63c6cfb2ac46dbfb41c65db17e19fd4050eba4bd0a6ffadc42f3ed&"
+                alt="Conjure">
+            <h2>Conjure</h2>
+            <p>Conjure is a permissionless platform that allows anyone to create tokenized assets on Ethereum,
+                representing any imaginable asset. The resulting Synths are fully collateralized by Ether and have their
+                value pegged via a flexible combination of multiple arbitrary price sources. Conjure enables the
+                creation of synthetic currencies, tokens from other blockchains, real-world commodities, and exotic
+                assets like basket currencies and indices.</p> <a href="#" target="_blank">Conjure Your Assets</a>
+        </div>
+        <div class="dapp-card"> <img
+                src="https://cdn.discordapp.com/attachments/810019961165578294/1227541024910475314/f55abd57-f87a-4c79-8b81-37482fef5320.webp?ex=6628c7aa&is=661652aa&hm=0e2689bc46be3f2f1996a5163b0f0f1fe794dbe12f6ca60a87a538deb86cc2ed&"
+                alt="the Wall">
+            <h2>the Wall</h2>
+            <p>The Wall is a decentralized messaging platform that allows users to post permanent, on-chain messages
+                called tags. Each message is wrapped as an NFT, making it fully ownable. Users earn 10 $BRK tokens per
+                message sent, incentivizing participation. The Wall provides a unique way to communicate and leave a
+                lasting mark on the blockchain.</p> <a href="https://tagthewall.org/" target="_blank">Tag the Wall</a>
+        </div>
+        <div class="dapp-card"> <img
+                src="https://cdn.discordapp.com/attachments/810019961165578294/1227557026490748928/image.png?ex=6628d692&is=66166192&hm=4983aba7a320c820209ace174b2e6089017a7256635b6366765410258647548c&"
+                alt="alchemy">
+            <h2>alchemy</h2>
+            <p>Alchemy allows you to create a tokenized DAO for any NFT collection. Transform your NFTs into liquid,
+                community-controlled assets that can be traded, voted on, and used to manage your NFTs. With Alchemy,
+                you can create funds, communities, and split collections between friends, all without coding or
+                technical experience. Unlock the full potential of your NFTs with Alchemy.</p> <a
+                href="https://alchemydao.com/" target="_blank">Create Your NFT DAO</a>
+        </div>
+        <!-- Add more dapp-card elements for each dApp you want to showcase -->
+    </main>
+</body>
+
+</html>
