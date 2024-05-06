@@ -4,240 +4,590 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍕 Cheesy Subscriptions 🎉</title>
     <link rel="icon" type="image/png" href="s1.png">
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+</head>
 
-    <title>Made by PR0</title>
+<body>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive;
+            background-color: #f7d488;
             margin: 0;
             padding: 0;
-            background-color: #f1ffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        header {
-            background-color: #ff4081;
-            color: white;
+        .container {
+            max-width: 600px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-            position: relative;
+            margin: 20px;
             overflow: hidden;
-            padding: 40px;
-            width: 800px;
-            margin: auto;
-            margin-top: 20px;
-            margin-bottom: 0px;
-
-
+            display: flex;
+            flex-direction: column;
         }
 
         h1 {
-            margin: 0;
+            color: #ff5722;
             font-size: 36px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            margin-top: 0;
         }
 
-        main {
-            max-width: 1200px;
-            margin: 40px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            grid-gap: 30px;
-        }
-
-        a {
-            display: inline-block;
-            color: #00afff;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 30px;
-            transition: background-color 0.3s ease;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 2;
-            background-color: white;
-        }
-        .dapp-card {
+        .card {
+            background-color: #f5f5f5;
             border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            padding: 30px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            position: relative;
+            padding: 20px;
+            margin-bottom: 20px;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
-        .dapp-card:before {
-            content: "";
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            box-sizing: border-box;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .btn {
+            background-color: #ff5722;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e64a19;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #subscriptionDetails h2 {
+            color: #ff5722;
+            margin-top: 0;
+        }
+
+        #subscriptionDetails p {
+            margin-bottom: 10px;
+        }
+
+        #subscriptionDetails strong {
+            color: #333;
+        }
+
+        .emoji {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #0ccc0c;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            opacity: 0.9;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .details-container {
+            display: grid;
+            margin-top: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .detail-value {
+            font-size: 18px;
+            color: #ff5722;
+            word-break: break-all;
+            margin-bottom: 10px;
+            padding: 5px;
+
+            background-color: #fff;
+            border-radius: 20px;
+
+        }
+
+        .subscribed-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .subscribed-content h2 {
+            color: #ff5722;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .subscribed-content p {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .subscribed-animation {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin-top: 20px;
+        }
+
+        .cheese {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: skew(-45deg) translateX(-100%);
-            transition: transform 0.3s ease;
-            z-index: 1;
+            background-color: #ffce54;
+            border-radius: 50%;
+            animation: cheese-animation 2s infinite;
         }
 
-        .dapp-card:hover:before {
-            transform: skew(-45deg) translateX(100%);
+        .pepperoni {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #aa4d43;
+            border-radius: 50%;
+            animation: pepperoni-animation 2s infinite;
         }
 
-        .dapp-card:hover {
-            transform: translateY(-10px);
+        .mushroom {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: rgb(230, 230, 230);
+            border-radius: 50%;
+            animation: mushroom-animation 2s infinite;
         }
 
-        .dapp-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        .grated-cheese {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-image: radial-gradient(#fff 20%, transparent 20%),
+                radial-gradient(#fff 20%, transparent 20%);
+            background-position: 0 0, 10px 10px;
+            background-size: 20px 20px;
+            animation: cheese-animation 2s infinite;
         }
 
-        .dapp-card h2 {
-            margin: 0;
-            font-size: 24px;
+        @keyframes cheese-animation {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
-        .dapp-card p {
-            margin: 10px 0;
-            color: #fff;
+        @keyframes pepperoni-animation {
+            0% {
+                transform: translateY(0);
+            }
 
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
         }
 
+        @keyframes mushroom-animation {
+            0% {
+                transform: translateY(0);
+            }
 
-        .dapp-card:nth-child(4n+1) {
-            background-color: #ff4081;
-        }
+            50% {
+                transform: translateY(-10px) rotate(180deg);
+            }
 
-        .dapp-card:nth-child(4n+2) {
-            background-color: #4caf9c;
-        }
-
-        .dapp-card:nth-child(4n+3) {
-            background-color: #2196f3;
-        }
-
-        .dapp-card:nth-child(4n+4) {
-            background-color: #a83bff;
-        }
-
-        .dapp-card:nth-child(4n+1) h2,
-        .dapp-card:nth-child(4n+2) h2,
-        .dapp-card:nth-child(4n+3) h2,
-        .dapp-card:nth-child(4n+4) h2 {
-            color: white;
-        }
-
-        .dapp-card:nth-child(4n+1) a,
-        .dapp-card:nth-child(4n+2) a,
-        .dapp-card:nth-child(4n+3) a,
-        .dapp-card:nth-child(4n+4) a {
-            background-color: white;
-        }
-
-        .dapp-card:nth-child(4n+1) a:hover,
-        .dapp-card:nth-child(4n+2) a:hover,
-        .dapp-card:nth-child(4n+3) a:hover,
-        .dapp-card:nth-child(4n+4) a:hover {
-            background-color: #f0f0f0;
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
         }
     </style>
-</head>
-
-<body>
-    <header>
-        <h1>Made by me :)</h1>
-        <a style="margin-top: 10px" href="./crypto101.html">Crypto 101</a>
-        <a style="margin-left: 6px" href="https://twitter.com/not_pr0/">Twitter</a>
+    <div class="container" id="createForm">
+        <h1>Create Subscription</h1>
+        <div class="emoji">🍕🎉</div>
+        <div class="card">
+            <div class="form-group">
+                <label for="tokenAddress">Token Address:</label>
+                <input type="text" id="tokenAddress" placeholder="Enter ERC20 token address">
+            </div>
+            <div class="form-group">
+                <label for="subscriber">Subscriber Address:</label>
+                <input type="text" id="subscriber" placeholder="Enter subscriber address">
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" placeholder="Enter amount of tokens">
+            </div>
+            <div class="form-group">
+                <label for="window">Duration (in days):</label>
+                <input type="number" id="window" placeholder="Enter duration in days">
+            </div>
+            <div class="form-group">
+                <label for="once">Subscription Type:</label>
+                <select id="once">
+                    <option value="false">Recurring</option>
+                    <option value="true">One-time</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Network:</label>
+                <div>
+                    <select id="networkSelect">
+                        <option value="1">Mainnet</option>
+                        <option value="10">holesky</option>
+                        <option value="10">Optimism</option>
+                        <option value="8453">Base</option>
+                        <option value="gnosis">Gnosis</option>
+                    </select>
+                </div>
+            </div>
+            <button id="createBtn" class="btn">Create</button>
+        </div>
+        <div id="linkContainer" class="card">
+            <p>Subscription Link:</p>
+            <a href="" id="subLink">
+                <p id="subscriptionLink" style="    word-break: break-all;"></p>
+            </a>
+        </div>
     </div>
-    </header>
-    <main>
-        <div class="dapp-card"> <img
-                src="https://cdn.discordapp.com/attachments/810019961165578294/1227557024242466887/GBvaK5XWIAE12Ay.png?ex=6628d691&is=66166191&hm=32b8f187c4fcd1f9cec393fb49857fcf078ea671285129e3074e745c32110bf4&"
-                alt="Scry">
-            <h2>Scry</h2>
-            <p>Scry is an open-source, permissionless, and flexible framework for independent Oracle deployment. It
-                offers high-scale batching, revenue earning, cross-chain data, and instant deployment. With Scry, anyone
-                can run their own fully independent, autonomous oracle without coding, deployable in less than 5
-                minutes.</p> <a href="https://scry.finance/" target="_blank">Discover Scry</a>
+
+    <div class="container" id="subscriptionDetails">
+        <h1>Subscribe🍕😋</h1>
+        <div class="card">
+            <h2>Subscription Details</h2>
+            <div class="details-container">
+                <div class="detail-item">
+                    <div class="detail-label">Subscribe To:</div>
+                    <div class="detail-value" id="lender"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">My Address:</div>
+                    <div class="detail-value" id="friend"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Token:</div>
+                    <div class="detail-value" id="token"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label" id="totalStreamed2">Total Streamed:</div>
+                    <div class="detail-value" id="totalStreamed"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label" id="outstanding2">Outstanding:</div>
+                    <div class="detail-value" id="outstanding"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Amount:</div>
+                    <div class="detail-value" id="allowable"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Window:</div>
+                    <div class="detail-value"><span id="window1"></span></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label" id="timestamp2">Timestamp:</div>
+                    <div class="detail-value" id="timestamp1"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Once:</div>
+                    <div class="detail-value" id="once1"></div>
+                </div>
+            </div>
         </div>
-        <div class="dapp-card"> <img
-                src="https://cdn.discordapp.com/attachments/810019961165578294/1227557024003260497/F3ExJfgWgAAC00-.png?ex=6628d691&is=66166191&hm=9d44a02417a1c0e641eee151fbb6aa0ba6890eb84858fe6fb473beec9a154e72&"
-                alt="addrs">
-            <h2>addrs</h2>
-            <p>addrs simplifies cryptocurrency transactions by allowing users to create payment profiles containing all
-                their addresses in one place. Compatible with various wallets and protocols, addrs is a non-custodial
-                platform that gives users full control over their assets. It also enables receiving crypto using Visa,
-                Mastercard, or bank accounts without the need for a custodial account.</p> <a href="https://addrs.to/"
-                target="_blank">Simplify with addrs</a>
+        <div id="subscribeForm" class="card">
+            <button id="subscribeBtn" class="btn">Subscribe</button>
         </div>
-        <div class="dapp-card"> <img
-                src="https://cdn.discordapp.com/attachments/810019961165578294/1227557024905166919/GIZ_cHAXcAAIzka.png?ex=6628d691&is=66166191&hm=22d98e0462a31bd18c54b8858b320c14ff6d0844a156ced6e311977078f77e57&"
-                alt="Vain">
-            <h2>Vain</h2>
-            <p>Vain is an open marketplace for securely mining vanity ETH addresses using ECC offsets of public keys. It
-                provides a unique and personalized way to obtain custom Ethereum addresses that stand out from the
-                crowd.</p> <a href="https://vain.scry.finance/" target="_blank">Mine Your Vanity Address</a>
+        <div id="subscribedMessage" class="card hidden">
+            <div class="subscribed-content">
+                <div class="emoji">🎉🍕</div>
+                <h2>Congratulations!</h2>
+                <p>Your subscriptions cooking!</p>
+                <div class="subscribed-animation">
+                    <div class="cheese"></div>
+                    <div class="cheese"
+                        style='top: 5%; left: 5%; width:90%;   height: 90%;   background-color: #e74c3c'></div>
+                    <div class="grated-cheese"
+                        style='top: 5%; left: 5%; width:90%;   height: 90%;   background-color: #e74c3c'></div>
+
+                    <div class="pepperoni" style="top: 20%; left: 15%;"></div>
+                    <div class="pepperoni" style="top: 30%; right: 20%;"></div>
+                    <div class="pepperoni" style="top: 60%; left: 30%;"></div>
+                    <div class="pepperoni" style="top: 60%; right: 10%;"></div>
+                    <div class="mushroom" style="top: 30%; left: 40%;"></div>
+                    <div class="mushroom" style="top: 50%; right: 30%;"></div>
+                    <div class="mushroom" style="top: 70%; left: 20%;"></div>
+                </div>
+            </div>
         </div>
-        <div class="dapp-card"> <img
-                src="https://cdn.discordapp.com/attachments/810019961165578294/1227557025244774400/GKk4hk7WQAAD81M.png?ex=6628d691&is=66166191&hm=de9b7dc35685f3950f0433086bb3d8d5cf3810baf6e38df57d4c2679cccdaa58&"
-                alt="Kaku">
-            <h2>Kaku</h2>
-            <p>Kaku is a decentralized platform for commissioning art. Artists can showcase their work, and users can
-                request commissions with attached bounties. The commissioned art is minted as an NFT, ensuring
-                provenance and allowing the owner to show it off. Kaku provides a seamless and transparent way to
-                support artists and acquire unique digital art pieces.</p> <a href="https://kaku.art/"
-                target="_blank">Commission Art on Kaku</a>
-        </div>
-        <div class="dapp-card"> <img
-                src="https://cdn.discordapp.com/attachments/810019961165578294/1227557025530118154/F6i4hIpWEAEZTmD.png?ex=6628d691&is=66166191&hm=e9bcd9b035d28335e88923a445705254e94ba31b6e03a4612f0230da1085fea0&"
-                alt="Signet">
-            <h2>Signet</h2>
-            <p>Signet is a platform that allows creators to sign NFTs for their fans and collectors to gather signatures
-                from their favorite creators. It provides a unique way to showcase and authenticate digital autographs
-                on the blockchain. Users can display their signed NFTs, known as Signets, and engage with their favorite
-                creators in a new and exciting way.</p> <a href="https://signet.art/" target="_blank">Get Your
-                Signet</a>
-        </div>
-        <div class="dapp-card"> <img
-                src="https://cdn.discordapp.com/attachments/810019961165578294/1227557025798688849/E3yQGZSWYAI352h.png?ex=6628d691&is=66166191&hm=29ba7672ce63c6cfb2ac46dbfb41c65db17e19fd4050eba4bd0a6ffadc42f3ed&"
-                alt="Conjure">
-            <h2>Conjure</h2>
-            <p>Conjure is a permissionless platform that allows anyone to create tokenized assets on Ethereum,
-                representing any imaginable asset. The resulting Synths are fully collateralized by Ether and have their
-                value pegged via a flexible combination of multiple arbitrary price sources. Conjure enables the
-                creation of synthetic currencies, tokens from other blockchains, real-world commodities, and exotic
-                assets like basket currencies and indices.</p> <a href="#" target="_blank">Conjure Your Assets</a>
-        </div>
-        <div class="dapp-card"> <img
-                src="https://cdn.discordapp.com/attachments/810019961165578294/1227541024910475314/f55abd57-f87a-4c79-8b81-37482fef5320.webp?ex=6628c7aa&is=661652aa&hm=0e2689bc46be3f2f1996a5163b0f0f1fe794dbe12f6ca60a87a538deb86cc2ed&"
-                alt="the Wall">
-            <h2>the Wall</h2>
-            <p>The Wall is a decentralized messaging platform that allows users to post permanent, on-chain messages
-                called tags. Each message is wrapped as an NFT, making it fully ownable. Users earn 10 $BRK tokens per
-                message sent, incentivizing participation. The Wall provides a unique way to communicate and leave a
-                lasting mark on the blockchain.</p> <a href="https://tagthewall.org/" target="_blank">Tag the Wall</a>
-        </div>
-        <div class="dapp-card"> <img
-                src="https://cdn.discordapp.com/attachments/810019961165578294/1227557026490748928/image.png?ex=6628d692&is=66166192&hm=4983aba7a320c820209ace174b2e6089017a7256635b6366765410258647548c&"
-                alt="alchemy">
-            <h2>alchemy</h2>
-            <p>Alchemy allows you to create a tokenized DAO for any NFT collection. Transform your NFTs into liquid,
-                community-controlled assets that can be traded, voted on, and used to manage your NFTs. With Alchemy,
-                you can create funds, communities, and split collections between friends, all without coding or
-                technical experience. Unlock the full potential of your NFTs with Alchemy.</p> <a
-                href="https://alchemydao.com/" target="_blank">Create Your NFT DAO</a>
-        </div>
-        <!-- Add more dapp-card elements for each dApp you want to showcase -->
-    </main>
+        <script>
+            // Connect to the Stream contract
+            let streamContractAddress = '0x12A5103f551Fe9B659Fb40DCd4701CbE1bA0B3e6';
+            const streamContractABI = [{ "inputs": [{ "internalType": "address payable", "name": "feeAddrs", "type": "address" }], "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "lender", "type": "address" }, { "indexed": true, "internalType": "address", "name": "token", "type": "address" }, { "indexed": true, "internalType": "address", "name": "friend", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "StreamAllowed", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "token", "type": "address" }, { "indexed": true, "internalType": "address", "name": "lender", "type": "address" }, { "indexed": true, "internalType": "address", "name": "streamer", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "Streamed", "type": "event" }, { "inputs": [{ "internalType": "address", "name": "token", "type": "address" }, { "internalType": "address", "name": "friend", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }, { "internalType": "uint256", "name": "window", "type": "uint256" }, { "internalType": "bool", "name": "once", "type": "bool" }], "name": "allowStream", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "lender", "type": "address" }, { "internalType": "address", "name": "token", "type": "address" }, { "internalType": "address", "name": "friend", "type": "address" }], "name": "computeHash", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "pure", "type": "function" }, { "inputs": [], "name": "fee", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "feeAddress", "outputs": [{ "internalType": "address payable", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "token", "type": "address" }, { "internalType": "address", "name": "lender", "type": "address" }, { "internalType": "address", "name": "me", "type": "address" }], "name": "getAvailable", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "_fee", "type": "uint256" }, { "internalType": "address", "name": "newfeeAddress", "type": "address" }], "name": "setFee", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "token", "type": "address" }, { "internalType": "address", "name": "lender", "type": "address" }, { "internalType": "address", "name": "me", "type": "address" }], "name": "stream", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "name": "streamDetails", "outputs": [{ "internalType": "address", "name": "lender", "type": "address" }, { "internalType": "address", "name": "friend", "type": "address" }, { "internalType": "address", "name": "token", "type": "address" }, { "internalType": "uint256", "name": "totalStreamed", "type": "uint256" }, { "internalType": "uint256", "name": "outstanding", "type": "uint256" }, { "internalType": "uint256", "name": "allowable", "type": "uint256" }, { "internalType": "uint256", "name": "window", "type": "uint256" }, { "internalType": "uint256", "name": "timestamp", "type": "uint256" }, { "internalType": "bool", "name": "once", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }, { "internalType": "uint256", "name": "", "type": "uint256" }], "name": "streamDetailsByFriend", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }, { "internalType": "uint256", "name": "", "type": "uint256" }], "name": "streamDetailsByLender", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "friend", "type": "address" }], "name": "viewFriendAllowances", "outputs": [{ "internalType": "bytes32[]", "name": "", "type": "bytes32[]" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "lender", "type": "address" }], "name": "viewLenderAllowances", "outputs": [{ "internalType": "bytes32[]", "name": "", "type": "bytes32[]" }], "stateMutability": "view", "type": "function" }]; // Add the Stream contract ABI here
+
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            let signer;
+            let streamContract;
+
+            // Function to initialize the contract
+            async function initializeContract() {
+                await provider.send("eth_requestAccounts", []);
+                signer = provider.getSigner();
+                const { token, subscribe, amount, window, once, network } = getQueryParams();
+                network == 1 ? streamContractAddress = '0x90076e40a74f33cc2c673ecbf2fba4068af77892' : {}
+
+                if ((await provider.getNetwork()).chainId != network&&network) {
+                    toast = document.createElement('div');
+                    toast.classList.add('toast');
+                    toast.textContent = `Check network! Must be chainId: ${network.toString()}`;
+                    document.body.appendChild(toast);
+
+                    // Remove the toast after 3 seconds
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 3000);
+                    
+                }
+                streamContract = new ethers.Contract(streamContractAddress, streamContractABI, signer);
+               await check()
+
+
+                const subscriptionHash = await streamContract.computeHash('0x14B214CA36249b516B59401B3b221CB87483b53C', '0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85', '0x9D31e30003f253563Ff108BC60B16Fdf2c93abb5');
+
+                const details = await streamContract.streamDetails(subscriptionHash);
+
+                console.log(1)
+                // displaySubscriptionDetails(details);
+            }
+
+            // Function to get query parameters from the URL
+            function getQueryParams() {
+                const params = new URLSearchParams(window.location.search);
+                return {
+                    token: params.get('token'),
+                    subscribe: params.get('subscribe'),
+                    amount: params.get('amount'),
+                    window: params.get('window'),
+                    once: params.get('once'),
+                    network: params.get('network')
+                };
+            }
+
+            // Function to display the subscription link
+            function displaySubscriptionLink(link) {
+                const linkContainer = document.getElementById('linkContainer');
+                const subscriptionLink = document.getElementById('subscriptionLink');
+                const subLink = document.getElementById('subLink');
+
+                subscriptionLink.textContent = link;
+                subLink.href = link;
+
+                linkContainer.classList.remove('hidden');
+                navigator.clipboard.writeText(link)
+                    .then(() => {
+                        // Show a toast notification
+                        const toast = document.createElement('div');
+                        toast.classList.add('toast');
+                        toast.textContent = 'Subscription link copied to clipboard!';
+                        document.body.appendChild(toast);
+
+                        // Remove the toast after 3 seconds
+                        setTimeout(() => {
+                            toast.remove();
+                        }, 3000);
+                    })
+                    .catch((error) => {
+                        console.error('Failed to copy subscription link:', error);
+                    });
+            }
+
+            // Function to display the subscription details
+            function displaySubscriptionDetails(details) {
+                document.getElementById('lender').textContent = details.lender;
+                document.getElementById('friend').textContent = details.friend;
+                document.getElementById('token').textContent = details.token;
+                document.getElementById('totalStreamed').textContent = ethers.utils.formatUnits(details.totalStreamed, 18);
+                document.getElementById('outstanding').textContent = ethers.utils.formatUnits(details.outstanding, 18);
+                document.getElementById('allowable').textContent = ethers.utils.formatUnits(details.allowable, 18);
+                document.getElementById('window1').textContent = details.window.toNumber();
+                document.getElementById('timestamp1').textContent = new Date(details.timestamp.toNumber() * 1000).toLocaleString();
+                document.getElementById('once1').textContent = details.once ? 'One-time' : 'Recurring';
+
+                document.getElementById('subscriptionDetails').classList.remove('hidden');
+            }
+
+            // Function to handle the create subscription form submission
+            async function handleCreateSubscription(event) {
+                //console.log(await window.location.origin)
+                event.preventDefault();
+                const tokenAddress = document.getElementById('tokenAddress').value;
+                const subscriber = document.getElementById('subscriber').value;
+                const amount = ethers.utils.parseUnits(document.getElementById('amount').value, 18);
+                const window = document.getElementById('window').value * 24 * 60 * 60; // Convert days to seconds
+                const once = document.getElementById('once').value === 'true';
+                const selectedNetwork = document.getElementById('networkSelect').value;
+
+                const subscriptionLink = `https://sub.spot.pizza/?token=${tokenAddress}&subscribe=${subscriber}&amount=${amount}&window=${window}&once=${once}&network=${selectedNetwork}`;
+                console.log(subscriptionLink)
+                displaySubscriptionLink(subscriptionLink);
+            }
+
+            // Function to handle the subscribe button click
+            async function check() {
+                const { token, subscribe, amount, window, once } = getQueryParams();
+                console.log(token, subscribe, amount, window, once)
+
+                if (token && subscribe && amount && window && once !== null) {
+                    document.getElementById('createForm').classList.add('hidden');
+                    let subscriptionHash
+                    let details = { lender: 1 }
+                    try {
+                        subscriptionHash = await streamContract.computeHash(signer.getAddress(), token, subscribe);
+                        details = await streamContract.streamDetails(subscriptionHash);
+                        console.log(details)
+                    } catch (error) {
+console.log(error)
+                    } console.log(details)
+                    if (details.lender !== ethers.constants.AddressZero && details.lender != 1) {
+                        console.log('t')
+                        displaySubscriptionDetails(details);
+                        document.getElementById('subscribedMessage').classList.remove('hidden');
+                        document.getElementById('subscribeForm').classList.add('hidden');
+
+                        document.getElementById('outstanding2').classList.remove('hidden');
+                        document.getElementById('totalStreamed2').classList.remove('hidden');
+                        document.getElementById('timestamp2').classList.remove('hidden');
+                        document.getElementById('outstanding').classList.remove('hidden');
+                        document.getElementById('totalStreamed').classList.remove('hidden');
+                        document.getElementById('timestamp1').classList.remove('hidden');
+                    } else {
+                        console.log(token, subscribe, amount, window, once)
+                        // Display the subscription details
+                        document.getElementById('token').textContent = token;
+                        document.getElementById('friend').textContent = await signer.getAddress();//subscribe;
+
+                        document.getElementById('lender').textContent = subscribe;
+                        document.getElementById('allowable').textContent = ethers.utils.formatUnits(amount, 18);
+                        document.getElementById('window1').textContent = !once ? `Pay every ${Math.floor(window / 86400)}d:${Math.floor((window % 86400) / 3600)}h:${Math.floor((window % 3600) / 60)}m:${window % 60}s` : `Sub until ${new Date(Date.now() + window * 1000).toLocaleString()}`;
+                        document.getElementById('once1').textContent = once ? 'One-time' : 'Recurring';
+
+                        document.getElementById('outstanding2').classList.add('hidden');
+                        document.getElementById('totalStreamed2').classList.add('hidden');
+                        document.getElementById('timestamp2').classList.add('hidden');
+                        document.getElementById('outstanding').classList.add('hidden');
+                        document.getElementById('totalStreamed').classList.add('hidden');
+                        document.getElementById('timestamp1').classList.add('hidden');
+
+                        document.getElementById('subscriptionDetails').classList.remove('hidden');
+                        document.getElementById('subscribeForm').classList.remove('hidden');
+                    }
+                } else {
+                    
+                    document.getElementById('subscriptionDetails').classList.add('hidden');
+                }
+            }
+            async function handleSubscribe() {
+                const { token, subscribe, amount, window, once, network } = getQueryParams();
+
+                console.log(token, subscribe, amount, window, once, (await provider.getNetwork()).chainId, network)
+                if ((await provider.getNetwork()).chainId != network) {
+                    toast = document.createElement('div');
+                    toast.classList.add('toast');
+                    toast.textContent = `Check network! Must be chainId: ${network.toString()}`;
+                    document.body.appendChild(toast);
+
+                    // Remove the toast after 3 seconds
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 3000);
+                    return
+                }
+                let tx=await streamContract.allowStream(token, subscribe, amount, window, once);
+               await tx.wait()
+                check()
+                document.getElementById('subscribedMessage').classList.remove('hidden');
+
+
+
+            }
+            // Initialize the contract when the page loads
+            window.addEventListener('load', initializeContract);
+
+            // Handle the create subscription form submission
+            const createForm = document.getElementById('createBtn');
+            createForm.addEventListener('click', handleCreateSubscription);
+
+            // Handle the subscribe button click
+            const subscribeBtn = document.getElementById('subscribeBtn');
+            subscribeBtn.addEventListener('click', handleSubscribe);</script>
 </body>
 
 </html>
