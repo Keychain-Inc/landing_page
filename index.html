@@ -560,9 +560,8 @@
                         document.getElementById('friend').textContent = await signer.getAddress();
                         document.getElementById('lender').textContent = subscribe;
                         document.getElementById('allowable').textContent =amount, 18;
-                        document.getElementById('window1').textContent = !once ? `Pay every ${Math.floor(window / 86400)}d:${Math.floor((window % 86400) / 3600)}h:${Math.floor((window % 3600) / 60)}m:${window % 60}s` : `Sub until ${new Date(Date.now() + window * 1000).toLocaleString()}`;
-                        document.getElementById('once1').textContent = once ? 'One-time' : 'Recurring';
-
+                        document.getElementById('window1').textContent = once=='false' ? `Pay every ${Math.floor(window / 86400)}d:${Math.floor((window % 86400) / 3600)}h:${Math.floor((window % 3600) / 60)}m:${window % 60}s` : `Sub until ${new Date(Date.now() + window * 1000).toLocaleString()}`;
+                        document.getElementById('once1').textContent = once!='false' ? 'One-time' : 'Recurring';
                         document.getElementById('outstanding2').classList.add('hidden');
                         document.getElementById('totalStreamed2').classList.add('hidden');
                         document.getElementById('timestamp2').classList.add('hidden');
