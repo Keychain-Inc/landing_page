@@ -474,7 +474,7 @@
                 document.getElementById('totalStreamed').textContent = ethers.utils.formatUnits(details.totalStreamed, dec);
                 document.getElementById('outstanding').textContent = ethers.utils.formatUnits(details.outstanding, dec);
                 document.getElementById('allowable').textContent = ethers.utils.formatUnits(details.allowable, dec);
-                document.getElementById('window1').textContent = details.window.toNumber();
+                document.getElementById('window1').textContent =!details.once ? `Pay every ${Math.floor(details.window.toNumber() / 86400)}d:${Math.floor((details.window.toNumber() % 86400) / 3600)}h:${Math.floor((details.window.toNumber() % 3600) / 60)}m:${details.window.toNumber() % 60}s` : `Sub until ${new Date(Date.now() + details.window.toNumber() * 1000).toLocaleString()}`;//details.window.toNumber();
                 document.getElementById('timestamp1').textContent = new Date(details.timestamp.toNumber() * 1000).toLocaleString();
                 document.getElementById('once1').textContent = details.once ? 'One-time' : 'Recurring';
 
