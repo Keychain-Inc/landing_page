@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🍕 Cheesy Subscriptions 🎉</title>
-    <link rel="icon" type="image/png" href="s1.png">
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <link rel="icon" type="image/png" href="s1.png">
 </head>
 
 <body>
@@ -404,7 +404,7 @@
                 const { token, subscribe, amount, window, once, network } = getQueryParams();
                 network == 1 ? streamContractAddress = '0x90076e40a74f33cc2c673ecbf2fba4068af77892' : {}
 
-                if ((await provider.getNetwork()).chainId != network&&network) {
+                if ((await provider.getNetwork()).chainId != network && network) {
                     toast = document.createElement('div');
                     toast.classList.add('toast');
                     toast.textContent = `Check network! Must be chainId: ${network.toString()}`;
@@ -414,10 +414,10 @@
                     setTimeout(() => {
                         toast.remove();
                     }, 3000);
-                    
+
                 }
                 streamContract = new ethers.Contract(streamContractAddress, streamContractABI, signer);
-               await check()
+                await check()
 
 
                 const subscriptionHash = await streamContract.computeHash('0x14B214CA36249b516B59401B3b221CB87483b53C', '0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85', '0x9D31e30003f253563Ff108BC60B16Fdf2c93abb5');
@@ -470,13 +470,10 @@
             }
 
             // Function to display the subscription details
-            function displaySubscriptionDetails(details) {
-                document.getElementById('lender').textContent = details.lender;
-                document.getElementById('friend').textContent = details.friend;
-                document.getElementById('token').textContent = details.token;
-                document.getElementById('totalStreamed').textContent = ethers.utils.formatUnits(details.totalStreamed, 18);
-                document.getElementById('outstanding').textContent = ethers.utils.formatUnits(details.outstanding, 18);
-                document.getElementById('allowable').textContent = ethers.utils.formatUnits(details.allowable, 18);
+            function displaySubscriptionDetails(details,dec) {
+                document.getElementById('totalStreamed').textContent = ethers.utils.formatUnits(details.totalStreamed, dec);
+                document.getElementById('outstanding').textContent = ethers.utils.formatUnits(details.outstanding, dec);
+                document.getElementById('allowable').textContent = ethers.utils.formatUnits(details.allowable, dec);
                 document.getElementById('window1').textContent = details.window.toNumber();
                 document.getElementById('timestamp1').textContent = new Date(details.timestamp.toNumber() * 1000).toLocaleString();
                 document.getElementById('once1').textContent = details.once ? 'One-time' : 'Recurring';
@@ -490,7 +487,7 @@
                 event.preventDefault();
                 const tokenAddress = document.getElementById('tokenAddress').value;
                 const subscriber = document.getElementById('subscriber').value;
-                const amount = ethers.utils.parseUnits(document.getElementById('amount').value, 18);
+                const amount = document.getElementById('amount').value;
                 const window = document.getElementById('window').value * 24 * 60 * 60; // Convert days to seconds
                 const once = document.getElementById('once').value === 'true';
                 const selectedNetwork = document.getElementById('networkSelect').value;
@@ -514,11 +511,30 @@
                         details = await streamContract.streamDetails(subscriptionHash);
                         console.log(details)
                     } catch (error) {
-console.log(error)
+                        console.log(error)
                     } console.log(details)
                     if (details.lender !== ethers.constants.AddressZero && details.lender != 1) {
                         console.log('t')
-                        displaySubscriptionDetails(details);
+                        
+                        const tokenContract = new ethers.Contract(token, [
+                {
+                    "constant": true,
+                    "inputs": [],
+                    "name": "decimals",
+                    "outputs": [
+                        {
+                            "name": "",
+                            "type": "uint8"
+                        }
+                    ],
+                    "payable": false,
+                    "stateMutability": "view",
+                    "type": "function"
+                }
+
+                        ], provider);
+                        const dec = await tokenContract.decimals();
+                        displaySubscriptionDetails(details,dec);
                         document.getElementById('subscribedMessage').classList.remove('hidden');
                         document.getElementById('subscribeForm').classList.add('hidden');
 
@@ -528,14 +544,22 @@ console.log(error)
                         document.getElementById('outstanding').classList.remove('hidden');
                         document.getElementById('totalStreamed').classList.remove('hidden');
                         document.getElementById('timestamp1').classList.remove('hidden');
+                        
+                        document.getElementById('token').textContent = token;
+                        document.getElementById('friend').textContent = await signer.getAddress();
+                        document.getElementById('lender').textContent = subscribe;
+                        
+                        document.getElementById('lender').textContent = await resolveENS(subscribe);
+
+                        document.getElementById('friend').textContent = await resolveENS(await signer.getAddress());
+                        document.getElementById('token').textContent = await resolveENS(token, 1);
                     } else {
                         console.log(token, subscribe, amount, window, once)
                         // Display the subscription details
                         document.getElementById('token').textContent = token;
-                        document.getElementById('friend').textContent = await signer.getAddress();//subscribe;
-
+                        document.getElementById('friend').textContent = await signer.getAddress();
                         document.getElementById('lender').textContent = subscribe;
-                        document.getElementById('allowable').textContent = ethers.utils.formatUnits(amount, 18);
+                        document.getElementById('allowable').textContent =amount, 18;
                         document.getElementById('window1').textContent = !once ? `Pay every ${Math.floor(window / 86400)}d:${Math.floor((window % 86400) / 3600)}h:${Math.floor((window % 3600) / 60)}m:${window % 60}s` : `Sub until ${new Date(Date.now() + window * 1000).toLocaleString()}`;
                         document.getElementById('once1').textContent = once ? 'One-time' : 'Recurring';
 
@@ -548,9 +572,14 @@ console.log(error)
 
                         document.getElementById('subscriptionDetails').classList.remove('hidden');
                         document.getElementById('subscribeForm').classList.remove('hidden');
+                        document.getElementById('lender').textContent = await resolveENS(subscribe);
+
+                        document.getElementById('friend').textContent = await resolveENS(await signer.getAddress());
+                        document.getElementById('token').textContent = await resolveENS(token, 1);
+
                     }
                 } else {
-                    
+
                     document.getElementById('subscriptionDetails').classList.add('hidden');
                 }
             }
@@ -570,8 +599,30 @@ console.log(error)
                     }, 3000);
                     return
                 }
-                let tx=await streamContract.allowStream(token, subscribe, amount, window, once);
-               await tx.wait()
+                
+                const tokenContract = new ethers.Contract(token, [
+                {
+                    "constant": true,
+                    "inputs": [],
+                    "name": "decimals",
+                    "outputs": [
+                        {
+                            "name": "",
+                            "type": "uint8"
+                        }
+                    ],
+                    "payable": false,
+                    "stateMutability": "view",
+                    "type": "function"
+                }
+
+                        ], provider);
+                        const dec = await tokenContract.decimals();
+                        console.log(token, subscribe, (amount*10**dec), window, once)
+                let tx = await streamContract.allowStream(token, subscribe, (amount*10**dec), window, once);
+
+                await tx.wait()
+
                 check()
                 document.getElementById('subscribedMessage').classList.remove('hidden');
 
@@ -587,7 +638,38 @@ console.log(error)
 
             // Handle the subscribe button click
             const subscribeBtn = document.getElementById('subscribeBtn');
-            subscribeBtn.addEventListener('click', handleSubscribe);</script>
+            subscribeBtn.addEventListener('click', handleSubscribe);
+            async function resolveENS(address, lol) {
+                try {
+                    if (lol) {
+                        const tokenContract = new ethers.Contract(address, [
+                            {
+                                "constant": true,
+                                "inputs": [],
+                                "name": "name",
+                                "outputs": [
+                                    {
+                                        "name": "",
+                                        "type": "string"
+                                    }
+                                ],
+                                "payable": false,
+                                "stateMutability": "view",
+                                "type": "function"
+                            }
+                        ], provider);
+                        const tokenName = await tokenContract.name();
+                        return tokenName || address;
+                    }
+                    const pro = new ethers.providers.JsonRpcProvider('https://mainnet.gateway.tenderly.co');
+                    const ensName = await pro.lookupAddress(address);
+                    console.log(ensName, address)
+                    return ensName || address;
+                } catch (error) {
+                    console.log(error)
+                    return address;
+                }
+            }</script>
 </body>
 
 </html>
